@@ -1,18 +1,20 @@
 {
   "name": "cirah",
-  "version": "1.1.0",
-  "description": "CIRAH is a simple and efficient file organizer tool that helps you move files with specified extensions into a target directory. It includes detailed logging (auditing) to keep track of all operations.",
+  "version": "1.0.1",
+  "description": "A simple file organizer tool",
   "main": "lib/index.js",
+  "bin": {
+    "cirah": "./bin/cirah.js"
+  },
   "scripts": {
     "test": "jest"
   },
-  "bin": {
-    "cirah": "bin/cirah.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/miraafaq/cirahjs.git"
-  },
+  "keywords": [
+    "file",
+    "organizer",
+    "cli",
+    "tool"
+  ],
   "author": "Aafaq Ahmad Mir",
   "license": "MIT",
   "dependencies": {
@@ -20,6 +22,6 @@
     "simple-node-logger": "18.12.24"
   },
   "devDependencies": {
-    "jest": "^27.0.6"
+    "jest": "^27.0.0"
   }
 }
