@@ -16,8 +16,18 @@ To install CIRAH globally on your system, use npm: (-g will install globally)
 ```bash
 npm install -g cirah
 ```
+## Usage
+once you have installed with npm command , you are ready to go
 
-### git cloning...
+```bash
+# To Organise Enter below command & Follow the prompt : 
+cirah
+
+
+```
+Note : for organising in current directory leave the first prompt as it is.
+
+## Git cloning...
 To clone run command
 
 ```bash
