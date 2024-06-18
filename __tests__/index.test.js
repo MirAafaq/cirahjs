@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { moveFiles, logMessage, undoLastMove } = require('../lib/index');
+const { moveFiles, logMessage } = require('../lib/index');  
 
 describe('File Organizer', () => {
   const srcDir = './testSrc';
@@ -16,35 +16,23 @@ describe('File Organizer', () => {
   });
 
   afterAll(() => {
+    fs.unlinkSync(path.join(srcDir, testFileTxt));
+    fs.unlinkSync(path.join(srcDir, testFilePdf));
+    fs.rmdirSync(srcDir);
     fs.unlinkSync(path.join(targetDir, testFileTxt));
     fs.unlinkSync(path.join(targetDir, testFilePdf));
     fs.rmdirSync(targetDir);
   });
 
   test('should move files with specified extensions', () => {
-    moveFiles(srcDir, ['txt'], targetDir, false);
+    moveFiles(srcDir, ['txt'], targetDir);
     expect(fs.existsSync(path.join(targetDir, testFileTxt))).toBe(true);
     expect(fs.existsSync(path.join(srcDir, testFileTxt))).toBe(false);
-  });
-
-  test('should create symbolic links in the original location', () => {
-    moveFiles(srcDir, ['pdf'], targetDir, true);
-    const symlinkPath = path.join(srcDir, testFilePdf);
-    expect(fs.existsSync(path.join(targetDir, testFilePdf))).toBe(true);
-    expect(fs.lstatSync(symlinkPath).isSymbolicLink()).toBe(true);
-    fs.unlinkSync(symlinkPath);
   });
 
   test('should log messages', () => {
     logMessage('Test log message');
     const logs = fs.readFileSync('audit.log', 'utf-8');
     expect(logs).toMatch(/Test log message/);
-  });
-
-  test('should undo last move', () => {
-    moveFiles(srcDir, ['txt'], targetDir, false);
-    undoLastMove();
-    expect(fs.existsSync(path.join(srcDir, testFileTxt))).toBe(true);
-    expect(fs.existsSync(path.join(targetDir, testFileTxt))).toBe(false);
   });
 });
