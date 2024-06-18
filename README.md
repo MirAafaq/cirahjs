@@ -10,11 +10,18 @@ CIRAH is a simple and efficient file organizer tool that helps you move files wi
 - Run the script from any directory.
 
 ## Installation
+#### npm installation
 
-To install CIRAH globally on your system, use npm:
-
+To install CIRAH globally on your system, use npm: (-g will install globally)
 ```bash
 npm install -g cirah
+```
+
+### git cloning...
+To clone run command
+
+```bash
+git clone https://github.com/miraafaq/cirahjs.git
 ```
 ## Testing 
 Install package 
