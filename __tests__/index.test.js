@@ -1,14 +1,13 @@
 const fs = require('fs');
 const path = require('path');
-const { moveFiles, logMessage } = require('../lib/index');  // Adjust the path as necessary
+const { moveFiles, logMessage, undoLastMove } = require('../lib/index');
 
 describe('File Organizer', () => {
-  const srcDir = path.join(__dirname, 'testSrc');
-  const targetDir = path.join(__dirname, 'testTarget');
+  const srcDir = './testSrc';
+  const targetDir = './testTarget';
   const testFileTxt = 'testFile.txt';
   const testFilePdf = 'testFile.pdf';
-
-  // Ensure directories are created before tests
+  
   beforeAll(() => {
     if (!fs.existsSync(srcDir)) fs.mkdirSync(srcDir);
     if (!fs.existsSync(targetDir)) fs.mkdirSync(targetDir);
@@ -16,44 +15,36 @@ describe('File Organizer', () => {
     fs.writeFileSync(path.join(srcDir, testFilePdf), 'Test file content');
   });
 
-  // Clean up after tests
   afterAll(() => {
-    // Delete test files in srcDir
-    try {
-      if (fs.existsSync(path.join(srcDir, testFileTxt))) {
-        fs.unlinkSync(path.join(srcDir, testFileTxt));
-      }
-      if (fs.existsSync(path.join(srcDir, testFilePdf))) {
-        fs.unlinkSync(path.join(srcDir, testFilePdf));
-      }
-      fs.rmdirSync(srcDir);
-    } catch (err) {
-      console.error('Error cleaning up srcDir:', err);
-    }
-
-    // Delete test files in targetDir
-    try {
-      if (fs.existsSync(path.join(targetDir, testFileTxt))) {
-        fs.unlinkSync(path.join(targetDir, testFileTxt));
-      }
-      if (fs.existsSync(path.join(targetDir, testFilePdf))) {
-        fs.unlinkSync(path.join(targetDir, testFilePdf));
-      }
-      fs.rmdirSync(targetDir);
-    } catch (err) {
-      console.error('Error cleaning up targetDir:', err);
-    }
+    fs.unlinkSync(path.join(targetDir, testFileTxt));
+    fs.unlinkSync(path.join(targetDir, testFilePdf));
+    fs.rmdirSync(targetDir);
   });
 
   test('should move files with specified extensions', () => {
-    moveFiles(srcDir, ['txt'], targetDir);
+    moveFiles(srcDir, ['txt'], targetDir, false);
     expect(fs.existsSync(path.join(targetDir, testFileTxt))).toBe(true);
     expect(fs.existsSync(path.join(srcDir, testFileTxt))).toBe(false);
   });
 
+  test('should create symbolic links in the original location', () => {
+    moveFiles(srcDir, ['pdf'], targetDir, true);
+    const symlinkPath = path.join(srcDir, testFilePdf);
+    expect(fs.existsSync(path.join(targetDir, testFilePdf))).toBe(true);
+    expect(fs.lstatSync(symlinkPath).isSymbolicLink()).toBe(true);
+    fs.unlinkSync(symlinkPath);
+  });
+
   test('should log messages', () => {
     logMessage('Test log message');
-    const logs = fs.readFileSync(path.join(__dirname, '..', 'audit.log'), 'utf-8');
+    const logs = fs.readFileSync('audit.log', 'utf-8');
     expect(logs).toMatch(/Test log message/);
+  });
+
+  test('should undo last move', () => {
+    moveFiles(srcDir, ['txt'], targetDir, false);
+    undoLastMove();
+    expect(fs.existsSync(path.join(srcDir, testFileTxt))).toBe(true);
+    expect(fs.existsSync(path.join(targetDir, testFileTxt))).toBe(false);
   });
 });
