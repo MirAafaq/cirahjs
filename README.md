@@ -15,3 +15,25 @@ To install CIRAH globally on your system, use npm:
 
 ```bash
 npm install -g cirah
+```
+## Testing 
+Install package 
+```bash
+npm i
+npm test
+```
+You will see below kind of result if all passed
+```bash
+
+
+ PASS  __tests__/index.test.js
+  File Organizer
+    √ should move files with specified extensions (141 ms)
+    √ should log messages (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        1.494 s, estimated 2 s
+Ran all test suites.
+```
