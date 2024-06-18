@@ -1,0 +1,27 @@
+{
+    "name": "cirah",
+    "version": "1.0.0",
+    "description": "A simple file organizer tool",
+    "main": "lib/index.js",
+    "bin": {
+      "cirah": "./bin/cirah.js"
+    },
+    "scripts": {
+      "test": "jest"
+    },
+    "keywords": [
+      "file",
+      "organizer",
+      "cli",
+      "tool"
+    ],
+    "author": "Aafaq Ahmad Mir",
+    "license": "MIT",
+    "dependencies": {
+      "chalk": "^4.1.2"
+    },
+    "devDependencies": {
+      "jest": "^27.0.0"
+    }
+  }
+  
