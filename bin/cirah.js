@@ -10,6 +10,22 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+const version = '1.8.0';
+
+function showVersion() {
+  console.log(`cirahjs version ${version}`);
+}
+
+function showHelp() {
+  console.log(`
+Usage: cirah [options]
+
+Options:
+  --version    Show version number
+  --help       Show help information
+    undo       Undo an action   
+  `);
+}
 
 const logFile = 'audit.log';
 function main() {
@@ -37,13 +53,21 @@ function main() {
   });
 }
 
-// Handle command line arguments for undo operation
-if (process.argv[2] === 'undo') {
+
+const args = process.argv.slice(2);
+if (args.length === 0) {
+  main();
+} else if (args.includes('--version')) {
+  showVersion();
+  rl.close();
+} else if (args.includes('--help')) {
+  showHelp();
+  rl.close();
+} else if (args.includes('undo') || args.includes('--undo') ) {
   undoLastMove();
   rl.close();
-
 } else {
-  main();
+  console.log('Unknown command. Use --help to see available options.');
 }
 
 module.exports = { moveFiles, logMessage, undoLastMove };
