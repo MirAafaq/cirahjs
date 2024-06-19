@@ -18,11 +18,12 @@ function main() {
  / ___| |_ _| |  _ \     / \    | | | |
 | |      | |  | |_) |   / _ \   | |_| |
 | |___   | |  |  _ <   / ___ \  |  _  |
- \____| |___| |_| \_\ /_/   \_\ |_| |_|                                
-`));
-console.log(chalk.green('Developed by: Aafaq Ahmad Mir'));
-  console.log(chalk.green('GitHub: github.com/miraafaq'));
-  console.log(chalk.green('Website: https://miraafaq.in'));
+ \____| |___| |_| \_\ /_/   \_\ |_| |_|`));
+ console.log(chalk.green('-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-'));
+ console.log(chalk.green('| Fastest File Organizer ~ Cirah        |'));
+ console.log(chalk.green('| Developed by: Aafaq Ahmad Mir         |'));
+ console.log(chalk.green('| GitHub: https://github.com/miraafaq   |'));
+ console.log(chalk.green('-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-'));
 
   rl.question(colorize('Enter the source directory (default is current directory): '), (srcDir) => {
     srcDir = srcDir || '.';

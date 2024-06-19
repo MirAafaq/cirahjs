@@ -1,10 +1,10 @@
 {
   "name": "cirah",
-  "version": "1.2.5",
+  "version": "1.3.0",
   "description": "A simple file organizer tool",
   "main": "lib/index.js",
   "bin": {
-    "cirah": "./bin/cirah.js"
+    "cirah": "bin/cirah.js"
   },
   "scripts": {
     "test": "jest"
