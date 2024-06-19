@@ -3,17 +3,16 @@
 const { moveFiles, logMessage, undoLastMove, colorize } = require('../lib/index');
 const chalk = require('chalk');
 const readline = require('readline');
-const fs = require('fs');
 const path = require('path');
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-const version = '1.8.0';
+const version = '2.0.2';
 
 function showVersion() {
-  console.log(`cirahjs version ${version}`);
+  console.log(`cirah version ${version}`);
 }
 
 function showHelp() {
