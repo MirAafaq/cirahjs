@@ -14,9 +14,9 @@ const rl = readline.createInterface({
 const logFile = 'audit.log';
 function main() {
   console.log(chalk.green(`
-    -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-    |  CIRAH - PEACEFUL ADVENTURE WHEN SPEEDY TOOL  |
-    -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+|  CIRAH - PEACEFUL ADVENTURE WHEN SPEEDY TOOL  |
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
   `));
  console.log(chalk.green('-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-'));
  console.log(chalk.green('| Fastest File Organizer ~ Cirah        |'));
@@ -40,6 +40,8 @@ function main() {
 // Handle command line arguments for undo operation
 if (process.argv[2] === 'undo') {
   undoLastMove();
+  rl.close();
+
 } else {
   main();
 }
