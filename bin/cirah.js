@@ -14,11 +14,10 @@ const rl = readline.createInterface({
 const logFile = 'audit.log';
 function main() {
   console.log(chalk.green(`
-  ____   ___   ____       _      _   _ 
- / ___| |_ _| |  _ \     / \    | | | |
-| |      | |  | |_) |   / _ \   | |_| |
-| |___   | |  |  _ <   / ___ \  |  _  |
- \____| |___| |_| \_\ /_/   \_\ |_| |_|`));
+    -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+    |  CIRAH - PEACEFUL ADVENTURE WHEN SPEEDY TOOL  |
+    -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+  `));
  console.log(chalk.green('-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-'));
  console.log(chalk.green('| Fastest File Organizer ~ Cirah        |'));
  console.log(chalk.green('| Developed by: Aafaq Ahmad Mir         |'));

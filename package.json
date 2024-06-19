@@ -1,6 +1,6 @@
 {
   "name": "cirah",
-  "version": "1.3.0",
+  "version": "1.5.0",
   "description": "A simple file organizer tool",
   "main": "lib/index.js",
   "bin": {
