@@ -8,7 +8,9 @@ CIRAH is a simple and efficient file organizer tool that helps you move files wi
 - Organize files based on their extensions.
 - Specify the target directory for organized files.
 - Detailed logging of operations.
+- Undo changes on the go
 - Run the script from any directory.
+  
 
 ## Installation
 #### npm installation
