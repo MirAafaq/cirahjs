@@ -26,6 +26,10 @@ once you have installed with npm command , you are ready to go
 # To Organise Enter below command & Follow the prompt : 
 cirah
 
+# For help enter
+cirah --help
+
+
 
 ```
 Note : for organising in current directory leave the first prompt as it is.
